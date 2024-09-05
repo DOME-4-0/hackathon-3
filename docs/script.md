@@ -36,6 +36,9 @@ Here we will have two options, or strands, potentially 4.
 6. OpenModel-DOME 4.0 case (Casper, Jesper, Owain?, Monica?)
 7. VIPCOAT-DOME 4.0 Case (Casper)--> (is this the same as point 6?)
 8. address one of the use cases in details...need more details, e.g. from CMCL
-9. integrate applications (like the ones from the success stories ) using containerisation 
-10. hands on visualisation session (Roberto, and Adham)
-11. Docuementation building from a user perspective (Willem/Bijan)
+  * CMCL connector provides emission simulation data
+  * given the label (e.g. CO or SO2), search Chemeo and/or Pubchem GHS for more data
+  * combine them in a Jupyter notebook (a new "app")
+10. integrate applications (like the ones from the success stories ) using containerisation 
+11. hands on visualisation session (Roberto, and Adham)
+12. Docuementation building from a user perspective (Willem/Bijan)
