@@ -34,7 +34,7 @@ Here we will have two options, or strands, potentially 4.
       4. a group discussing monetization avenues for stakeholders/platform and business models and 
       5. what other technical aspects can be done, can we use what we developed in a different more useful way? what do we need to do with provenance?
 6. OpenModel-DOME 4.0 case (Casper, Jesper, Owain?, Monica?)
-7. VIPCOAT-DOME 4.0 Case (Casper)--> (is this the same as point 6?)
+7. **VIPCOAT-DOME 4.0 Case** (Casper)--> (is this the same as point 6?)
 8. address one of the use cases in details...need more details, e.g. from CMCL
   * CMCL connector provides emission simulation data
   * given the label (e.g. CO or SO2), search Chemeo and/or Pubchem GHS for more data
