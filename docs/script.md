@@ -34,7 +34,8 @@ Here we will have two options, or strands, potentially 4.
       4. a group discussing monetization avenues for stakeholders/platform and business models and 
       5. what other technical aspects can be done, can we use what we developed in a different more useful way? what do we need to do with provenance?
 6. OpenModel-DOME 4.0 case (Casper, Jesper, Owain?, Monica?)
-4. address one of the use cases in details...need more details, e.g. from CMCL
-5. integrate applications (like the ones from the success stories ) using containerisation 
-6. hands on visualisation session (Roberto, and Adham)
-7. Docuementation building from a user perspective (Willem/Bijan)
+7. VIPCOAT-DOME 4.0 Case (Casper)--> (is this the same as point 6?)
+8. address one of the use cases in details...need more details, e.g. from CMCL
+9. integrate applications (like the ones from the success stories ) using containerisation 
+10. hands on visualisation session (Roberto, and Adham)
+11. Docuementation building from a user perspective (Willem/Bijan)
