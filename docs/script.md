@@ -31,9 +31,9 @@ Here we will have two options, or strands, potentially 4.
 1. Story board development:
    2. based on hack 1 and the other sessions, what does DOME 4.0 still needs, what can we do to take it to the next level!
    3. a breakout to 
-      4. a group discussing monetization avenues for stakeholders/platform and business models and 
+      4. a group discussing monetization avenues for stakeholders/platform, business models and exploitation avenues
       5. what other technical aspects can be done, can we use what we developed in a different more useful way? what do we need to do with provenance?
-6. OpenModel-DOME 4.0 case (Casper, Jesper, Owain?, Monica?)
+6. **OpenModel-DOME 4.0** case (Casper, Jesper, Owain?, Monica?)
 7. **VIPCOAT-DOME 4.0 Case** (Casper)--> (OTEAPI compatibility and uses)
 8. address one of the use cases in details...need more details, e.g. from CMCL
   * CMCL connector provides emission simulation data
