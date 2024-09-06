@@ -10,7 +10,7 @@ Here you'll find three exercise to crate datasets for DOME 4.0:
 Firstly, you can clone the repository for the hackathon to your local machine like so:
 
 - Open our terminal and run `git clone git@github.com:DOME-4-0/hackathon-3.git`
-- Alternatively, you can launch the exercise in your browser with binder ![Binder](https://mybinder.org/badge_logo.svg)
+- Alternatively, navigate to the notebook directory and launch the exercise in your browser with binder (![Binder](https://mybinder.org/badge_logo.svg))
 
 
 
