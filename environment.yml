@@ -12,7 +12,6 @@ dependencies:
   - contourpy
   - cycler
   - decorator
-  - discomat
   - exceptiongroup
   - executing
   - feedparser
@@ -55,7 +54,3 @@ dependencies:
   - wcwidth
   - wget
   - wheel
-  -
-# discomat for CUDS creation
-  - pip:
-      - git@github.com:materials-discovery/discomat.git
