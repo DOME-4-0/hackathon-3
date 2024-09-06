@@ -2,7 +2,6 @@ dependencies:
   - python
   - numpy
   - pandas
-  - csv
   - ase
   - asap3
   - arxiv
@@ -33,7 +32,6 @@ dependencies:
   - pillow
   - prompt-toolkit
   - ptyprocess
-  - pure-eval
   - pygments
   - pyparsing
   - python-dateutil
@@ -45,7 +43,6 @@ dependencies:
   - setuptools
   - sgmllib3k
   - six
-  - stack-data
   - tqdm
   - traitlets
   - typing-extensions
