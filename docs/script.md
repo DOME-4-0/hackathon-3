@@ -61,3 +61,12 @@ Here we will have two options, or strands, potentially 4.
 10. integrate applications (like the ones from the success stories ) using containerisation 
 11. hands on visualisation session (Roberto, and Adham)
 12. Docuementation building from a user perspective (Willem/Bijan)
+
+
+### hack 3: 
+- Bijan will lead a *plenary* hack for the story boarding, what is DOME 4.0 in your point of view, now that you know what it can do, perhaps you identified some aspect that has potential, others totally useless, others could be improved, etc...
+- breakout sessions(we provide A3 papers and pens!)
+
+- VIPCOAT case (Casper, and Treesa)
+- Use Case 1 Session (Chung)
+- optionally a pharma case for day too. 
