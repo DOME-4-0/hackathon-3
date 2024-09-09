@@ -29,17 +29,21 @@ DOME 4.0 basic metadata (the data set ontology)
 in each case the hack should demonstrate the discoverability of the data 
 
 ### hack 1 (A): 
-Hands on session on using all features of DOME 4.0, including onboarding of data sets (even if they are synthetic) (Bjorn is lead? and Adham backup)
+Hands on session on using all features of DOME 4.0, through the web interface, including onboarding of data sets (even if they are synthetic) (Bjorn is lead? and Adham backup)
 
 Users will find data that are relevant to them (but does not have to be for the hackathon), the main goal is to learn the end user aspects. Report: is what do we like and what we do not like in DOME 4.0. 
   
 ### hack 2 (B):
-- IDMT
+- IDMT Case: Preview what the IDMT data/ontology is about, upload it through the ontology interface of DOME 4.0, then perrform searches and visualisations. [Amit]
 - Pharma Case
+  - connector to one of the open MRI databases (Adham to share with treesa)
+  - building a basic ontology of the data sets already available at Chris's group. [Owain/Lingyun]   
 - Owain
+  - API to scan publications (from arxive) and pulling in the data into a DME 4.0 data set and uploading then visualisation, we can then think how to add this as a service into DOME 4.0, so we can relate papers to data sets and vice versa.    
 - Lingyun
-- 
-
+  - Nasicon battery data case, and digitalising it into the Data set ontology of DOME 4.0 [Lingyun]
+- Talk to Adrien about demonstrating how he integrated a "secret application " by mixing the DOME 4.0 platform and the containers running locally behind firewalls [Candidate Adrien, Adham to contact]
+- The Chase Case - Noel and Silvia
 
 # Day 2: Problem Hack 2 (or Storyboard Development)
 Here we will have two options, or strands, potentially 4. 
