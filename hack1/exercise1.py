@@ -7,7 +7,7 @@ import csv
 # In this exercise we're going to use the DOME dataset ontology to create a CUDS of data for DOME
 
 
-# Here we'll use the package discomat to create triples of data using the DOME dataset ontology
+# Here we'll use the package del to create triples of data using the DOME dataset ontology
 
 ds_001 = Cuds(ontology_type=DOMEDS.data_set, description="Example of DOME4.0 dataset")
 ds_001.add(DOMEDS.has_dataset_creator, "KOK_FOONG_LEE")
@@ -24,7 +24,7 @@ ds_001.add(DOMEDS.has_dataset_title, "DATASET 001")
 # Here we can print our dataset
 print(ds_001)
 
-# Using the gvis function in discomat we can visualise our dataset
+# Using the gvis function in del we can visualise our dataset
 
 gvis(ds_001, "ds_001.html")
 

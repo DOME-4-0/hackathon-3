@@ -1,4 +1,4 @@
-from nlp.app import handler
+from datascrap.app import handler
 
 # Part 1
 # In this exercise, we'll use NLPs to search and download papers from arXiv
@@ -28,7 +28,7 @@ from discomat.visualisation.cuds_vis import gvis
 from discomat.ontology.namespaces import DOMEDS
 import csv
 
-# Now we'll use discomat to create a dataset of the downlaoded papers
+# Now we'll use del to create a dataset of the downlaoded papers
 
 # Load dataset from CSV
 with open('papers/metadata.csv', mode='r') as file:

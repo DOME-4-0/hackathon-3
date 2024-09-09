@@ -1,4 +1,4 @@
-from nlp.app import handler
+from datascrap.app import handler
 import pandas as pd
 import os
 
@@ -78,7 +78,7 @@ from discomat.visualisation.cuds_vis import gvis
 from discomat.ontology.namespaces import DOMEDS
 import csv
 
-# Now we'll use discomat to create a dataset of the downlaoded papers
+# Now we'll use del to create a dataset of the downlaoded papers
 
 # Load dataset from CSV
 with open('papers/metadata_custom.csv', mode='r') as file:
