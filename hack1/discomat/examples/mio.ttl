@@ -1,0 +1,535 @@
+@prefix : <http://www.ddmd.io/mio/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.ddmd.io/mio/> .
+
+<http://www.ddmd.io/mio/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.ddmd.io/mio/IsPreceededBy
+:IsPreceededBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :RelativeProperty .
+
+
+###  http://www.ddmd.io/mio/MereotopologicalProperty
+:MereotopologicalProperty rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :has .
+
+
+###  http://www.ddmd.io/mio/RelativeProperty
+:RelativeProperty rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :MereotopologicalProperty .
+
+
+###  http://www.ddmd.io/mio/has
+:has rdf:type owl:ObjectProperty .
+
+
+###  http://www.ddmd.io/mio/hasPart
+:hasPart rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :has .
+
+
+###  http://www.ddmd.io/mio/hasPart
+:hasValue rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :hasPart .
+
+###  http://www.ddmd.io/mio/isConductedby
+:isConductedby rdf:type owl:ObjectProperty .
+
+
+###  http://www.ddmd.io/mio/isOverlapping
+:isOverlapping rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :RelativeProperty .
+
+
+###  http://www.ddmd.io/mio/isSuperceededBy
+:isSuperceededBy rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :RelativeProperty .
+
+
+###  http://www.ddmd.io/mio/utilizes
+:utilizes rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.ddmd.io/mio/Equipment_Model
+:Equipment_Model rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Specimen_Preparation_Equipment ,
+                             :Test_Equipment ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Represents the model or version of the test equipment used" .
+
+
+###  http://www.ddmd.io/mio/Equipment_Serial_Number
+:Equipment_Serial_Number rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :Specimen_Preparation_Equipment ,
+                                     :Test_Equipment ;
+                         rdfs:range xsd:string ;
+                         rdfs:comment "Represents the unique serial number assigned to the test equipment." .
+
+
+###  http://www.ddmd.io/mio/Parameter_Unit
+:Parameter_Unit rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Test_Environment ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Represents the unit of measurement for a test parameter, such as \"MPa\" for stress or \"mm\" for displacement." .
+
+
+###  http://www.ddmd.io/mio/Parameter_Value
+:Parameter_Value rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Test_Environment ;
+                 rdfs:range xsd:decimal ,
+                            xsd:float ;
+                 rdfs:comment "Represents the specific value or measurement of a test parameter." .
+
+
+###  http://www.ddmd.io/mio/RawMaterial
+:RawMaterial rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Material_Manufacturing ;
+             rdfs:range xsd:decimal ,
+                        xsd:float ,
+                        xsd:string ;
+             rdfs:comment "Represents the raw materials used in the manufacturing process, including name and quantity" .
+
+
+###  http://www.ddmd.io/mio/Result_Unit
+:Result_Unit rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Represents the unit of measurement for a test result, such as \"MPa\" for strength or \"J/m²\" for fracture toughness." .
+
+
+###  http://www.ddmd.io/mio/Result_Value
+:Result_Value rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:decimal ,
+                         xsd:float ;
+              rdfs:comment "Represents the specific value or measurement of a test result" .
+
+
+###  http://www.ddmd.io/mio/Specimen_Dimensions
+:Specimen_Dimensions rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "Represents the dimensions or size of a test specimen." .
+
+
+###  http://www.ddmd.io/mio/Specimen_ID
+:Specimen_ID rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Represents the unique identifier or code assigned to a test specimen." .
+
+
+###  http://www.ddmd.io/mio/name
+:name rdf:type owl:DatatypeProperty ,
+               owl:FunctionalProperty ;
+      rdfs:range xsd:string .
+
+
+###  http://www.ddmd.io/mio/value
+:value rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.ddmd.io/mio/Anaysis
+:Analysis rdf:type owl:Class ;
+         rdfs:subClassOf :Process_Step ;
+         rdfs:comment "Represents the examination and interpretation of collected data to extract meaningful insights and draw conclusions." ;
+         rdfs:label "Analysis" .
+
+
+###  http://www.ddmd.io/mio/Cognition
+:Cognition rdf:type owl:Class ;
+           rdfs:subClassOf :Process ;
+           rdfs:comment "Represents the mental processes involved in acquiring, processing, and understanding information, often crucial in interpreting and analyzing test results." ;
+           rdfs:label "Cognition" .
+
+
+###  http://www.ddmd.io/mio/Composite_Material
+:Composite_Material rdf:type owl:Class ;
+                    rdfs:subClassOf :Material ;
+                    rdfs:comment "Represents a material composed of two or more distinct constituents with different properties." ;
+                    rdfs:label "Composite Material" .
+
+
+###  http://www.ddmd.io/mio/Condition
+:Condition rdf:type owl:Class ;
+           rdfs:subClassOf :Overlapping ;
+           rdfs:label "Condition" .
+
+
+###  http://www.ddmd.io/mio/Data
+:Data rdf:type owl:Class ;
+      rdfs:subClassOf :Sign ;
+      rdfs:comment "Represents the information obtained from mechanical testing of composites." ;
+      rdfs:label "Data" .
+
+
+###  http://www.ddmd.io/mio/DataSet
+:DataSet rdf:type owl:Class ;
+         rdfs:subClassOf :Encoded_Data ;
+         rdfs:comment "Represents a collection of related data or information, often organized for analysis, presentation, or sharing." ;
+         rdfs:label "Data Set" .
+
+
+
+:CUDS rdf:type owl:Class ;
+         rdfs:subClassOf :DataSet ;
+         rdfs:comment "An Common Universal/Unified Data Structure" ;
+         rdfs:label "Common Universal and Unified Data Structure" .
+
+:SDS rdf:type owl:Class ;
+         rdfs:subClassOf :CUDS ;
+         rdfs:comment "An ontology Based, fully semantic Common Universal/Unified Data Structure" ;
+         rdfs:label "Semantic Data Structure or Set" .
+
+###  http://www.ddmd.io/mio/Data_Analysis
+:Data_Analysis rdf:type owl:Class ;
+               rdfs:subClassOf :Anaysis ;
+               rdfs:comment "Represents the process of examining and interpreting the data obtained from the mechanical testing of composites." ;
+               rdfs:label "Data Analysis" .
+
+
+###  http://www.ddmd.io/mio/Data_Analysis_Tool
+:Data_Analysis_Tool rdf:type owl:Class ;
+                    rdfs:subClassOf :Software .
+
+
+###  http://www.ddmd.io/mio/Data_Storage_Tool
+:Data_Storage_Tool rdf:type owl:Class ;
+                   rdfs:subClassOf :Software ;
+                   rdfs:comment "Represents software or applications used for managing and organizing testing data in the context of mechanical testing of composites" ;
+                   rdfs:label "Data Storage Tool" .
+
+
+###  http://www.ddmd.io/mio/Data_Visualization
+:Data_Visualization rdf:type owl:Class ;
+                    rdfs:subClassOf :Data_Analysis ,
+                                    :Displayed_Data ;
+                    rdfs:comment "Represents the graphical representation of the data collected during the mechanical testing of composites." ;
+                    rdfs:label "Data Visualization" .
+
+
+###  http://www.ddmd.io/mio/Datum
+:Datum rdf:type owl:Class ;
+       rdfs:subClassOf :Encoded_Data ;
+       rdfs:comment "Represents a single piece of information or observation, often considered as a basic unit of data." .
+
+
+###  http://www.ddmd.io/mio/Displayed_Data
+:Displayed_Data rdf:type owl:Class ;
+                rdfs:subClassOf :Data ;
+                rdfs:comment "Represents data that has been transformed into a visual or graphical representation for better understanding and interpretation." ;
+                rdfs:label "Displayed Data" .
+
+
+###  http://www.ddmd.io/mio/Encoded_Data
+:Encoded_Data rdf:type owl:Class ;
+              rdfs:subClassOf :Data ;
+              rdfs:comment "Represents information that has been transformed into a specific format or encoding for storage or transmission." .
+
+:Document rdf:type owl:Class ;
+              rdfs:subClassOf :Encoded_Data ;
+              rdfs:comment "..." .
+
+
+###  http://www.ddmd.io/mio/Environment
+:Environment rdf:type owl:Class ;
+             rdfs:subClassOf :Matter .
+
+
+###  http://www.ddmd.io/mio/Experiment
+:Experiment rdf:type owl:Class ;
+            rdfs:subClassOf :Process ;
+            rdfs:comment "Represents a controlled procedure or investigation designed to gather data and test hypotheses related to material mechanical properties." ;
+            rdfs:label "Experiment" .
+
+
+###  http://www.ddmd.io/mio/Geometrical
+:Geometrical rdf:type owl:Class ;
+             rdfs:subClassOf :Mereotopological ;
+             rdfs:comment "Represents entities related to geometric properties, shapes, and dimensions." ;
+             rdfs:label "Geometrical" .
+
+
+###  http://www.ddmd.io/mio/Hardware
+:Hardware rdf:type owl:Class ;
+          rdfs:subClassOf :Tool .
+
+
+###  http://www.ddmd.io/mio/Indentifying_Property
+:Indentifying_Property rdf:type owl:Class ;
+                       rdfs:subClassOf :Property .
+
+
+###  http://www.ddmd.io/mio/Input
+:Input rdf:type owl:Class ;
+       rdfs:subClassOf :Preceding ;
+       rdfs:comment "Represents the data, material, or parameter provided as an input to a process, simulation, or test." .
+
+
+###  http://www.ddmd.io/mio/Literal
+:Literal rdf:type owl:Class ;
+         rdfs:subClassOf :Sign .
+
+
+###  http://www.ddmd.io/mio/Material
+:Material rdf:type owl:Class ;
+          rdfs:subClassOf :Matter ;
+          rdfs:comment "Represents a substance or mixture of substances that constitutes an object." ;
+          rdfs:label "Material" .
+
+
+###  http://www.ddmd.io/mio/Material_Manufacturing
+:Material_Manufacturing rdf:type owl:Class ;
+                        rdfs:subClassOf :Process ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasPart ;
+                                          owl:someValuesFrom :Process_Step
+                                        ] ;
+                        rdfs:comment "Represents the process of producing or fabricating composite materials and other types of materials." ;
+                        rdfs:label "Material Manufacturing" .
+
+
+###  http://www.ddmd.io/mio/Mathematical
+:Mathematical rdf:type owl:Class ;
+              rdfs:subClassOf :Sign .
+
+
+###  http://www.ddmd.io/mio/Matter
+:Matter rdf:type owl:Class .
+
+###  http://www.ddmd.io/mio/entity
+:entity rdf:type owl:Class ;
+                        rdfs:comment "Represents the an entity as in individual, organisation, group that participates in some activity" ;
+                        rdfs:label "Entity" .
+
+:Participant rdf:type owl:Class ;
+        rdfs:subClassOf :entity ;
+        rdfs:comment "Represents the an entity as in individual, organisation, group that participates in some activity" .
+
+:Agent rdf:type owl:Class ;
+        rdfs:subClassOf :Stakeholder ;
+        rdfs:comment "Represents the an entity as in individual, organisation, group that participates in some activity" .
+
+:Actor rdf:type owl:Class ;
+        rdfs:subClassOf :Agent ;
+        rdfs:comment "Represents an entity as in individual, organisation, group that activetely participates in some activity" .
+
+:Stakeholder rdf:type owl:Class ;
+        rdfs:subClassOf :Participant ;
+        rdfs:comment "Represents the an entity as in individual, organisation, group that has a stake (vested in) some aspect of .." .
+
+
+###  http://www.ddmd.io/mio/Measurement
+:Measurement rdf:type owl:Class ;
+             rdfs:subClassOf :Process_Step .
+
+
+###  http://www.ddmd.io/mio/Medium
+:Medium rdf:type owl:Class ;
+        rdfs:subClassOf :Environment ;
+        rdfs:comment "Represents the medium or environment in which the mechanical testing of composite material specimens takes place." ;
+        rdfs:label "Medium" .
+
+
+###  http://www.ddmd.io/mio/Mereotopological
+:Mereotopological rdf:type owl:Class ;
+                  rdfs:comment "In formal ontology, a branch of metaphysics, and in ontological computer science, mereotopology is a first-order theory, embodying mereological and topological concepts, of the relations among wholes, parts, parts of parts, and the boundaries between parts." ;
+                  rdfs:label "Mereotopological" .
+
+
+###  http://www.ddmd.io/mio/Ordered
+:Ordered rdf:type owl:Class ;
+         rdfs:subClassOf :Mereotopological ;
+         rdfs:comment "Represents entities or concepts that possess a sequential or arranged relationship." ;
+         rdfs:label "Ordered" .
+
+
+###  http://www.ddmd.io/mio/Output
+:Output rdf:type owl:Class ;
+        rdfs:subClassOf :Superceding ;
+        rdfs:comment "Represents the result, product, or data generated by a process, experiment, or operation." ;
+        rdfs:label "Output" .
+
+
+###  http://www.ddmd.io/mio/Overlapping
+:Overlapping rdf:type owl:Class ;
+             rdfs:subClassOf :Stages ;
+             rdfs:comment "Represents situations where entities or events share a common timeframe or exist simultaneously." ;
+             rdfs:label "Overlapping" .
+
+
+###  http://www.ddmd.io/mio/Physical_Property
+:Physical_Property rdf:type owl:Class ;
+                   rdfs:subClassOf :Property .
+
+
+###  http://www.ddmd.io/mio/Preceding
+:Preceding rdf:type owl:Class ;
+           rdfs:subClassOf :Stages ;
+           rdfs:comment "Represents entities or events that occur before or lead up to other entities or events in a chronological or logical order." ;
+           rdfs:label "Preceding" .
+
+
+###  http://www.ddmd.io/mio/Process
+:Process rdf:type owl:Class ;
+         rdfs:subClassOf :Work .
+
+
+###  http://www.ddmd.io/mio/Process_Step
+:Process_Step rdf:type owl:Class ;
+              rdfs:subClassOf :Process ;
+              rdfs:comment "Represents a distinct stage or unit of work, contributing to the overall testing process." ;
+              rdfs:label "Process Step or Unit of work" .
+
+
+###  http://www.ddmd.io/mio/Property
+:Property rdf:type owl:Class ;
+          rdfs:comment "Represents an attribute, characteristic, or quality that can be used to describe and differentiate entities. Properties provide additional information about individuals (instances of classes) within a domain." .
+
+
+###  http://www.ddmd.io/mio/Quantity
+:Quantity rdf:type owl:Class ;
+          rdfs:subClassOf :Sign .
+
+
+###  http://www.ddmd.io/mio/Raw_Data
+:Raw_Data rdf:type owl:Class ;
+          rdfs:subClassOf :Data ;
+          rdfs:comment "Represents unprocessed or unmodified data collected directly from measurements or observations before any transformation or encoding has been applied." ;
+          rdfs:label "Raw Data" .
+
+
+###  http://www.ddmd.io/mio/Reference_Property
+:Reference_Property rdf:type owl:Class ;
+                    rdfs:subClassOf :Property .
+
+
+###  http://www.ddmd.io/mio/Relative
+:Relative rdf:type owl:Class ;
+          rdfs:subClassOf :Ordered ;
+          rdfs:comment "Represents entities or concepts that are described or measured in relation to other entities." ;
+          rdfs:label "Relative" .
+
+
+###  http://www.ddmd.io/mio/Result
+:Result rdf:type owl:Class ;
+        rdfs:subClassOf :Output .
+
+
+###  http://www.ddmd.io/mio/Sample
+:Sample rdf:type owl:Class ;
+        rdfs:subClassOf :Matter ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasPart ;
+                          owl:someValuesFrom :Material
+                        ] ;
+        rdfs:comment "Represents a portion of a material or composite material taken for testing or analysis." ;
+        rdfs:label "Sample" .
+
+
+###  http://www.ddmd.io/mio/Sign
+:Sign rdf:type owl:Class .
+
+
+###  http://www.ddmd.io/mio/Software
+:Software rdf:type owl:Class ;
+          rdfs:subClassOf :Tool .
+
+
+###  http://www.ddmd.io/mio/Spatial
+:Spatial rdf:type owl:Class ;
+         rdfs:subClassOf :Mereotopological ;
+         rdfs:comment "Represents entities or concepts that pertain to the arrangement or distribution of objects or features in space." ;
+         rdfs:label "Spatial" .
+
+
+###  http://www.ddmd.io/mio/Specimen
+:Specimen rdf:type owl:Class ;
+          rdfs:subClassOf :Sample ;
+          rdfs:comment "Represents a physical sample prepared for mechanical testing or analysis." ;
+          rdfs:label "Specimen" .
+
+
+###  http://www.ddmd.io/mio/Specimen_Preparation_Equipment
+:Specimen_Preparation_Equipment rdf:type owl:Class ;
+                                rdfs:subClassOf :Hardware ;
+                                rdfs:comment "Represents a group of equipment used in the preparation of test specimens for mechanical testing of composites." ;
+                                rdfs:label "Specimen Preparation Equipment" .
+
+
+###  http://www.ddmd.io/mio/Stages
+:Stages rdf:type owl:Class ;
+        rdfs:subClassOf :Relative ;
+        rdfs:comment "Represents distinct phases or steps within a process, sequence." ;
+        rdfs:label "Stage" .
+
+
+###  http://www.ddmd.io/mio/Superceding
+:Superceding rdf:type owl:Class ;
+             rdfs:subClassOf :Stages ;
+             rdfs:comment "Represents entities or events that come after or replace other entities or events, often rendering them obsolete or outdated." ;
+             rdfs:label "Superceding" .
+
+
+###  http://www.ddmd.io/mio/Test
+:Test rdf:type owl:Class ;
+      rdfs:subClassOf :Experiment ;
+      rdfs:comment "Represents a procedure or experiment conducted to evaluate the mechanical properties of materials or composites." ;
+      rdfs:label "Test" .
+
+
+###  http://www.ddmd.io/mio/Test_Environment
+:Test_Environment rdf:type owl:Class ;
+                  rdfs:subClassOf :Environment ;
+                  rdfs:comment "Represents the surrounding conditions and external factors that influence the mechanical test but are not directly controlled or intentionally varied during the test. The test environment includes aspects such as temperature, humidity, pressure, and other conditions in which the test specimen is subjected to during the test." ;
+                  rdfs:label "Test Environment" .
+
+
+###  http://www.ddmd.io/mio/Test_Equipment
+:Test_Equipment rdf:type owl:Class ;
+                rdfs:subClassOf :Hardware ;
+                rdfs:comment "Represents the various types of equipment and apparatus used for conducting mechanical testing of composite material specimens." ;
+                rdfs:label "Test Equipment" .
+
+
+###  http://www.ddmd.io/mio/Test_Result
+:Test_Result rdf:type owl:Class ;
+             rdfs:subClassOf :Result .
+
+
+###  http://www.ddmd.io/mio/Tool
+:Tool rdf:type owl:Class .
+
+
+###  http://www.ddmd.io/mio/Visualization_Software
+:Visualization_Software rdf:type owl:Class ;
+                        rdfs:subClassOf :Data_Analysis_Tool ;
+                        rdfs:comment "Represents computer programs or tools used to create visual representations of the data from mechanical testing of composites." ;
+                        rdfs:label "Visualization Software" .
+
+
+###  http://www.ddmd.io/mio/Work
+:Work rdf:type owl:Class .
+
+
+:Description rdf:type owl:Class ;
+                rdfs:subClassOf :Indentifying_Property ;
+                rdfs:comment "helps identify a property from a human perspective (intended for human consumption, or intelligent LLM)" ;
+                rdfs:label "Description" .
+
+:Date rdf:type owl:Class ;
+                rdfs:subClassOf :Reference_Property ;
+                rdfs:comment "has a standard, and hence a reference propery.. " ;
+                rdfs:label "Date" .
