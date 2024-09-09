@@ -49,4 +49,3 @@ dependencies:
   - wcwidth
   - wget
   - wheel
-  - utils
