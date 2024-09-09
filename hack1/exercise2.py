@@ -60,3 +60,16 @@ for data in dataset:
 
 # Visualize the combined graph and export to HTML
 gvis(gall, "papers.html")
+
+# Let's export our graph as a .ttl file
+
+from rdflib import Graph
+
+g_total = Graph()
+for g in gall:
+    g_total.add(g)
+
+
+g_total.serialize("datasets.ttl", format="ttl")
+
+
