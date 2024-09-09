@@ -1,0 +1,238 @@
+@prefix ex: <https://emmc.eu/semantics/scenario/example.ttl#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix evmpo: <https://emmc.eu/semantics/evmpo/evmpo.ttl#> .
+@prefix domeDS: <http://dome40.eu/semantics/dome4.0_core_dataset#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dome-core: <https://dome40.eu/semantics/dome4.0_core#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_dataset_creator
+domeDS:has_dataset_creator rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf domeDS:has_ds_object_part ,
+                                              dcterms:creator ;
+                           rdfs:domain domeDS:data_set ;
+                           rdfs:range evmpo:agent ;
+                           rdfs:label "has dataset creator"^^xsd:string .
+
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_dataset_license
+domeDS:has_dataset_license rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf domeDS:has_ds_object_part ,
+                                              dcterms:license ;
+                           rdfs:domain domeDS:data_set ;
+                           rdfs:range evmpo:information_content_entity ;
+                           rdfs:label "has dataset license"^^xsd:string .
+
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_dataset_publisher
+domeDS:has_dataset_publisher rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf domeDS:has_ds_object_part ,
+                                                dcterms:publisher ;
+                             rdfs:domain domeDS:data_set ;
+                             rdfs:range evmpo:agent ;
+                             rdfs:label "has dataset publisher"^^xsd:string .
+
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_dataset_topic
+domeDS:has_dataset_topic rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf domeDS:has_ds_object_part ;
+                         rdfs:domain domeDS:data_set ;
+                         rdfs:range dome-core:topic ;
+                         rdfs:comment "Can be used to filter datasets analogously to what done for platforms"^^xsd:string ,
+                                      "Points to a topic/theme of the dataset"^^xsd:string .
+
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_ds_object_part
+domeDS:has_ds_object_part rdf:type owl:ObjectProperty ;
+                          rdfs:domain domeDS:data_set ;
+                          rdfs:range owl:Thing ;
+                          rdfs:comment "Note: parthood is used here in a very loose sense"^^xsd:string ,
+                                       "points to an object part of the dataset"^^xsd:string ;
+                          rdfs:label "has dataset object part"^^xsd:string .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_dataset_URL
+domeDS:has_dataset_URL rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf domeDS:has_ds_data_part ,
+                                          owl:seeAlso ;
+                       rdfs:domain domeDS:data_set ;
+                       rdfs:range xsd:anyURI ;
+                       rdfs:comment "points to a URL related to the dataset (e.g., downloadURL or other)"^^xsd:string ;
+                       rdfs:label "has dataset URL"^^xsd:string .
+
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_dataset_description
+domeDS:has_dataset_description rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf domeDS:has_ds_data_part ,
+                                                  dcterms:description ;
+                               rdfs:domain domeDS:data_set ;
+                               rdfs:range xsd:string ;
+                               rdfs:label "has dataset description"^^xsd:string .
+
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_dataset_issued_date
+domeDS:has_dataset_issued_date rdf:type owl:DatatypeProperty ;
+                               rdfs:subPropertyOf domeDS:has_ds_data_part ,
+                                                  dcterms:issued ;
+                               rdfs:domain domeDS:data_set ;
+                               rdfs:range xsd:date ;
+                               rdfs:label "has dataset issued date"^^xsd:string .
+
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_dataset_semantic_keyword
+domeDS:has_dataset_semantic_keyword rdf:type owl:DatatypeProperty ;
+                                    rdfs:subPropertyOf domeDS:has_ds_data_part ,
+                                                       dcat:keyword ;
+                                    rdfs:domain domeDS:data_set ;
+                                    rdfs:range xsd:anyURI ;
+                                    rdfs:comment "points to a keyword coming from an ontology, given as a URI"^^xsd:string ;
+                                    rdfs:label "has dataset semantic keyword"^^xsd:string .
+
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_dataset_syntactic_keyword
+domeDS:has_dataset_syntactic_keyword rdf:type owl:DatatypeProperty ;
+                                     rdfs:subPropertyOf domeDS:has_ds_data_part ,
+                                                        dcat:keyword ;
+                                     rdfs:domain domeDS:data_set ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:comment "points to a keyword given as a string"^^xsd:string ;
+                                     rdfs:label "has dataset syntactic keyword"^^xsd:string .
+
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_dataset_title
+domeDS:has_dataset_title rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf domeDS:has_ds_data_part ,
+                                            dcterms:title ;
+                         rdfs:domain domeDS:data_set ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "has dataset title"^^xsd:string .
+
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#has_ds_data_part
+domeDS:has_ds_data_part rdf:type owl:DatatypeProperty ;
+                        rdfs:domain domeDS:data_set ;
+                        rdfs:comment "points to a data part of the dataset"^^xsd:string ;
+                        rdfs:label "has dataset data part"^^xsd:string .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2002/07/owl#seeAlso
+owl:seeAlso rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/ns/dcat#keyword
+dcat:keyword rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dome40.eu/semantics/dome4.0_core_dataset#data_set
+domeDS:data_set rdf:type owl:Class ;
+                rdfs:subClassOf dome-core:dataset ;
+                rdfs:comment "A dome specific representation of a Semantic Data Set"^^xsd:string ,
+                             "We temporarily define it as a sub-class of DCAT-2 dataset"^^xsd:string ;
+                rdfs:label "DOME 4.0 Data Set"^^xsd:string .
+
+
+###  https://dome40.eu/semantics/dome4.0_core#dataset
+dome-core:dataset rdf:type owl:Class .
+
+
+###  https://dome40.eu/semantics/dome4.0_core#topic
+dome-core:topic rdf:type owl:Class .
+
+
+###  https://emmc.eu/semantics/evmpo/evmpo.ttl#agent
+evmpo:agent rdf:type owl:Class .
+
+
+###  https://emmc.eu/semantics/evmpo/evmpo.ttl#information_content_entity
+evmpo:information_content_entity rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://dome40.eu/semantics/dome4.0_core#SEA_VESSELS
+dome-core:SEA_VESSELS rdf:type owl:NamedIndividual .
+
+
+###  https://emmc.eu/semantics/scenario/example.ttl#DATASET_001
+ex:DATASET_001 rdf:type owl:NamedIndividual ,
+                        domeDS:data_set ;
+               domeDS:has_dataset_creator ex:KOK_FOONG_LEE ;
+               domeDS:has_dataset_license ex:LICENSE_1 ;
+               domeDS:has_dataset_publisher ex:DOME4.0_CONSORTIUM ;
+               domeDS:has_dataset_topic dome-core:SEA_VESSELS ;
+               domeDS:has_dataset_URL "https://sintef.sharepoint.com/teams/DOME4.0/Delte%20dokumenter/WP4/T4.1%20Example%20files/Showcase%20#1%20(CMCL)/ship.txt"^^xsd:anyURI ;
+               domeDS:has_dataset_description "Ship location example data (for a given ship at a given time)"^^xsd:string ;
+               domeDS:has_dataset_issued_date "2024-05-31"^^xsd:date ;
+               domeDS:has_dataset_semantic_keyword "https://schema.org/Vehicle"^^xsd:anyURI ;
+               domeDS:has_dataset_syntactic_keyword "ship"^^xsd:string ;
+               domeDS:has_dataset_title "DATASET 001"^^xsd:string .
+
+
+###  https://emmc.eu/semantics/scenario/example.ttl#DOME4.0_CONSORTIUM
+ex:DOME4.0_CONSORTIUM rdf:type owl:NamedIndividual .
+
+
+###  https://emmc.eu/semantics/scenario/example.ttl#KOK_FOONG_LEE
+ex:KOK_FOONG_LEE rdf:type owl:NamedIndividual .
+
+
+###  https://emmc.eu/semantics/scenario/example.ttl#LICENSE_1
+ex:LICENSE_1 rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
