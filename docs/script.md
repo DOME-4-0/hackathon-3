@@ -7,11 +7,7 @@
   - B) batch registration of ontology based data or 
   - c) graph based data 
 
-### hack 1 (A): 
-Hands on session on using all features of DOME 4.0, including onboarding of data sets (even if they are synthetic) (Bjorn is lead? and Adham backup)
-  
-  Users will find data that are relevant to them (but does not have to be for the hackathon), the main goal is to learn the end user aspects. Report: is what do we like and what we do not like in DOME 4.0. 
-- 
+
 
 We need 1-2 problems, where in the domain a stakeholder has a few data resources that the user wants to make available trhough or on DOME 4.0 platform: 
 
@@ -31,6 +27,19 @@ C is similar to B, but the user is not interested in an ontology of the case, bu
 DOME 4.0 basic metadata (the data set ontology)
 
 in each case the hack should demonstrate the discoverability of the data 
+
+### hack 1 (A): 
+Hands on session on using all features of DOME 4.0, including onboarding of data sets (even if they are synthetic) (Bjorn is lead? and Adham backup)
+
+Users will find data that are relevant to them (but does not have to be for the hackathon), the main goal is to learn the end user aspects. Report: is what do we like and what we do not like in DOME 4.0. 
+  
+### hack 2 (B):
+- IDMT
+- Pharma Case
+- Owain
+- Lingyun
+- 
+
 
 # Day 2: Problem Hack 2 (or Storyboard Development)
 Here we will have two options, or strands, potentially 4. 
