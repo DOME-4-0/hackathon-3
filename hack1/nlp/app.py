@@ -1,5 +1,7 @@
 import os
-import utils
+import sys
+sys.path.append(os.path.abspath('../'))
+from . import utils
 
 def handler(event, context):
     try:
