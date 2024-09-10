@@ -41,4 +41,4 @@ Here we will have two options, or strands, potentially 4.
   * CMCL connector provides emission simulation data
   * given the label (e.g. CO or SO2), search Chemeo and/or Pubchem GHS for more data
   * combine them in a Jupyter notebook (a new "app")
-3. Documentation building from a user perspective (Willem/Bijan)
+3. Documentation building from a user perspective (Willem,Treesa)
