@@ -15,3 +15,8 @@ This project focuses on analyzing 12 NASICON (Na Super Ionic Conductor) material
 - nasicon.py: Python script for building the nasicon material ontology and generating the visualization.
 - Chemical_formula_Parser.py: Script used to parse chemical formulas.
 
+## Requirements
+To run this project, the following dependencies are required:
+- pandas
+- rdflib
+
