@@ -1,0 +1,14 @@
+Materials,name,doi_reference,worktype,experiment_method,sintering_temperature,sintering_time,simulation_method,simulation_software,force_field,time_step,simulation_temperature,approximation_method,cutoff_energy,Kpoints,total_atoms,Lattice_a,Lattice_b,Lattice_c,Lattice_Volume,secondary_phase,secondary_phase_weight,grain_size,relative_density,Total_energy,band_gap_energy,activation_energy,Li_ion_conductivity
+Li1.33Al0.33Ti1.67P3O12,LATP,https://doi.org/10.1016/j.electacta.2023.142872,simulation,,,,DFT,VASP,,,,GGA,520,442,110,8.62,8.62,21.05,1352.71,,,2.24(_m),,-831.28,2.35,0.91,
+Li1.3Al0.3Ti1.7P3S0.17O11.83,LATPS,https://doi.org/10.1016/j.electacta.2023.142872,simulation,,,,DFT,VASP,,,,GGA,520,442,110,8.64,8.64,21.29,1375.81,,,,,-823.26,2.1,0.7,
+LiZr2P3O12,LZP,https://doi.org/10.1021/acs.jpcc.1c07314,simulation,,,,AIMD,Nagoya Atomistic Simulation Package,Machine learning force field,1000000,773,GGA-PBEsol,,,less than 500,,,,,,,,,,,0.49,0.0002 S/cm
+Li1.2Al0.2Zr1.8P3O12,LAZP,https://doi.org/10.1016/j.ceramint.2022.01.075,simulation,,,,MD,Lammps,"Buckingham potentials,Coulombic interactions",1_fs_,300,,,,13625,8.772,8.772,22.647,1509.1217,,,,,,,,0.0000119
+LiTi2P3O12,LTP,https://doi.org/10.20964/2022.01.03,simulation,,,,DFT,Material Studio,,,,GGA,500,444,,8.534,8.534,20.457,1509.1271,,,,,,0.1,,
+Mg0.5Ti2P3O12,MTP,https://doi.org/10.20964/2022.01.03,simulation,,,,DFT,Material Studio,,,,GGA,500,444,,8.4981,8.4981,20.9746,1290.223994,,,,,,0.089,,
+Li1.4Al0.3Ti1.7P3O11.9Cl0.1,LATPCl,https://doi.org/10.1007/s12274-023-5890-9,experiment,solid-state,900,6,,,,,,,,,,8.495,8.495,20.792,1299.585,LiTiPO5,6.75(wt%),2.24,96.93%,,,0.3,0.00213
+Li1.4Ti1.7Fe0.2Ca0.1P3O12,LFCTP,https://doi.org/10.1016/j.ssi.2013.09.012,experiment,sol-gel,750,30,,,,,,,,,,8.513,8.513,20.87,1309.801875,LiTiPO5,,1--2,,,,0.08,0.000196
+Li1.1Cr0.1Ti1.9P3O12,LCTP,https://doi.org/10.1016/j.ssi.2024.116460,experiment,sol-gel,1000,,,,,,,,,,,8.5151,8.5151,20.8902,1311.8,,,0.06,60,,,0.66,1.4
+Li1.3Al0.21B0.08In0.01Ti1.7P3O12,LABITP,https://doi.org/10.1016/j.ssi.2023.116174,experiment,solid-state,900,4,,,,,,,,,,8.4978,8.4978,20.851,1303.97,LiTiPO5,,,98.2,,,,0.00632
+Li1.3Al0.22B0.08Ti1.7P3O12,LABTP,https://doi.org/10.1016/j.ssi.2023.116174,experiment,solid-state,900,4,,,,,,,,,,8.5046,8.5046,20.871,1307.31,LiTiPO5,,,97.1,,,,0.00596
+Li1.3Al0.25Y0.05Ti1.7P3O12,LAYTP,https://doi.org/10.1016/j.physb.2016.08.020,experiment,solid-state,1100,5,,,,,,,,,,8.505,8.505,20.458,1286.248,"YPO4,LiTi2P3O12", less than 10,,85,,,,0.000063
+
