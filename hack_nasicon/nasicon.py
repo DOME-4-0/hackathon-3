@@ -3,7 +3,6 @@ from discomat.cuds.cuds import Cuds
 from rdflib import Graph, Namespace, Literal
 from discomat.ontology.namespaces import CUDS
 from Chemical_formula_Parser import ChemicalFormulaParser
-from mnemonic import Mnemonic
 from discomat.visualisation.cuds_vis import gvis
 
 CE = Namespace('http://materials-discovery.org/chemical-elements#')
@@ -57,7 +56,7 @@ for index,row in data.iterrows():
         cuds_objects.add(m)
 
 
-    # Create CUDS for name, doi, and add them to material's Cuds
+    # Create CUDS for Materials' name
     if pd.notna(name_value):
         mn = Cuds(ontology_type=MIO.Material_Name, description=f'material name: {name_value}')
         mn.add(MIO.name,Literal(name_value))
@@ -65,6 +64,7 @@ for index,row in data.iterrows():
         gall +=  m.graph + mn.graph
         cuds_objects.add(mn)
 
+    # Create the CUDS for doi Reference
     if pd.notna(doi_value):
         doi = Cuds(ontology_type=MIO.DoiReference,description=f'The cuds about doi reference of {material}')
         doi.add(MIO.Doi, Literal(doi_value))
@@ -84,7 +84,7 @@ for index,row in data.iterrows():
     cuds_objects.add(cc)
     cuds_objects.add(f)
 
-    # Parsing Chemical Formulas to 3 lists using chemical parser (in another py file)
+    # Parsing Chemical Formulas to 3 lists using Chemical_formula_Parser
     parser = ChemicalFormulaParser(material)
     fu_list = parser.fu_list
     e_list = parser.elements
@@ -108,7 +108,7 @@ for index,row in data.iterrows():
         element_symbol = e_list[i]
         stoichiometry_value = s_list[i]
 
-        # Dynamically create a CUDS instance for the element and store it in the dictionary
+        # Dynamically create the CUDS instance for the element and store it in the dictionary
         es = Cuds(ontology_type=CE[element_symbol],description=f'The cuds of the {element_symbol} element')  # Dynamically get the ontology type for the element
         fu.add(CUDS.has, es)  # Add the element CUDS instance to the formula unit
         cuds_objects.add(es)
@@ -121,7 +121,7 @@ for index,row in data.iterrows():
 
         gall +=  fu.graph + st.graph + es.graph
 
-    # Define the work of each material
+    # Create the cuds of each material's work
     w = Cuds(ontology_type=MIO.Work,description=f'the cuds of work for {material}')
     m.add(CUDS.has,w)
     cuds_objects.add(w)
@@ -129,36 +129,39 @@ for index,row in data.iterrows():
     gall +=  m.graph + w.graph
 
 
-
+    # Simulation Work for some materials
     if work == 'simulation':
         sm = Cuds(ontology_type=MIO.Simulation,description=f'simulation for {material}')
         w.add(CUDS.has, sm)
         cuds_objects.add(sm)
 
-
+        # Create the cuds for simulation method
         smm = Cuds(ontology_type=MIO.Simulation_method,description=f'{sim_method} simulation for {material}')
         smm.add(MIO.Value, Literal(sim_method))
         sm.add(CUDS.has, smm)
         cuds_objects.add(smm)
 
-
+        # Create the cuds for simulation software
         sms = Cuds(ontology_type=MIO.Simulation_Software,description=f'{sim_software} for {material} simulation')
         sms.add(MIO.Value, Literal(sim_software))
         sm.add(CUDS.has, sms)
         cuds_objects.add(sms)
 
+        # Create the cuds for Simulation settings (conditions)
         sims = Cuds(ontology_type=MIO.Simulation_Setting,description=f'simulation setting for {material}')
         sm.add(CUDS.has, sims)
         cuds_objects.add(sims)
 
-
+        # Create the cuds for simulation result
         smr = Cuds(ontology_type=MIO.simulation_result,description=f'{sim_method} simulation result for {material}')
         sm.add(CUDS.has, smr)
         cuds_objects.add(smr)
 
+        # Add all of the cuds to the graph
         gall += w.graph + sm.graph + smm.graph + sms.graph +sims.graph + smr.graph
 
 
+        # Create the Cuds for simulation settings
         if pd.notna(approx_method):
             am = Cuds(ontology_type=MIO.Approximation_Method,description=f'approximation method of simulation for {material}')
             am.add(MIO.Value, Literal(approx_method))
@@ -188,7 +191,6 @@ for index,row in data.iterrows():
             cuds_objects.add(ta)
             gall += sims.graph + ta.graph
 
-
         if pd.notna(force_field):
             ff = Cuds(ontology_type=MIO.ForceField, description=f'force field of simulation for {material}')
             ff.add(MIO.Value, Literal(force_field))
@@ -213,7 +215,7 @@ for index,row in data.iterrows():
             gall += sims.graph + simt.graph
 
 
-        # simulation result
+        # Create the cuds for simulation result
         if pd.notna(total_energy):
             te = Cuds(ontology_type=MIO.total_energy, description=f'total energy for {material}')
             te.add(MIO.Value, Literal(total_energy))
@@ -246,7 +248,7 @@ for index,row in data.iterrows():
             cuds_objects.add(lic)
             gall += smr.graph + lic.graph
 
-        # Add lattice parameters
+        # Create the cuds for lattice parameters in the simulation result
         if lattice_a_value or lattice_b_value or lattice_c_value or lattice_volume_value:
             Lp = Cuds(ontology_type=MIO.Lattice_parameter, description=f'lattice parameter for {material} in the simulation')
             smr.add(CUDS.has, Lp)
@@ -271,28 +273,32 @@ for index,row in data.iterrows():
                     cuds_objects.add(lattice_cuds_dict[var_name])
                     gall += Lp.graph + lattice_cuds_dict[var_name].graph
 
+    # Experiment Work for materials
     elif work == 'experiment':
         exp = Cuds(ontology_type=MIO.Experiment, description=f'Experiments of {material}')
         w.add(CUDS.has, exp)
         cuds_objects.add(exp)
 
-
+        # Create the Cuds for experiment method
         expm = Cuds(ontology_type=MIO.Experiment_method, description=f'Experiments method of {material}')
         expm.add(MIO.Value, Literal(exp_method))
         exp.add(CUDS.has, expm)
         cuds_objects.add(expm)
 
-
+        # Create the Cuds for experiment condition
         expc= Cuds(ontology_type=MIO.Experiment_condition, description=f'Experiments condition of {material}')
         exp.add(CUDS.has, expc)
         cuds_objects.add(expc)
 
+        # Create the Cuds for experiment result
         expr =Cuds(ontology_type=MIO.Experiment_result, description=f'Experiments result of {material}')
         exp.add(CUDS.has, expr)
         cuds_objects.add(expr)
 
         gall += w.graph + exp.graph+ expm.graph + expr.graph +expc.graph
 
+
+        # Add experiment conditions
         if pd.notna(sin_time):
             sint = Cuds(ontology_type=MIO.Sin_time, description=f'Sintering time of {material}')
             sint.add(MIO.Value, Literal(sin_time))
@@ -310,7 +316,7 @@ for index,row in data.iterrows():
         gall += expc.graph + sint.graph +sinT.graph
 
 
-        # add experiment result
+        # add experiment results
         if sec_phase is not None:
             sp = Cuds(ontology_type=MIO.Sec_phase, description=f'Second phase of {material}')
             sp.add(MIO.Value, Literal(sec_phase))
@@ -354,7 +360,7 @@ for index,row in data.iterrows():
 
         gall += expr.graph + ae.graph + lic.graph +sp.graph + spw.graph + gs.graph + rd.graph
 
-        # Add lattice parameters
+        # Create the cuds for lattice parameters in the experiment result
         if lattice_a_value or lattice_b_value or lattice_c_value or lattice_volume_value:
             Lp = Cuds(ontology_type=MIO.Lattice_parameter, description='The cuds of lattice parameter')
             expr.add(CUDS.has, Lp)
@@ -371,7 +377,6 @@ for index,row in data.iterrows():
 
             for lattice_type, value, unit, lattice_name, var_name in lattice_parameters:
                 if pd.notna(value):
-                    # Add a specific description for each lattice parameter CUDS
                     lattice_cuds_dict[var_name] = Cuds(ontology_type=lattice_type,description=f'{lattice_name} in the simulation for {material}')
                     lattice_cuds_dict[var_name].add(MIO.Value, Literal(value))
                     lattice_cuds_dict[var_name].add(MIO.Unit, Literal(unit))
@@ -386,5 +391,8 @@ print(f"Total number of unique CUDS objects in the graph: {len(cuds_objects)}")
 gvis(gall,'nasicon.html')
 
 gall.serialize('nasicon.ttl',format='ttl')
+
+
+
 
 
