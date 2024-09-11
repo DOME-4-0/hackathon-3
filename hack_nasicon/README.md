@@ -17,9 +17,8 @@ This project focuses on analyzing 12 NASICON (Na Super Ionic Conductor) material
 ## Requirements
 To run this project, follow these steps:
 
-1. **Install dependencies**
-
-2. Run the nasicon.py
+1. Run the nasicon.py
+2. Open the html file
 
 
 
