@@ -1,4 +1,5 @@
 import requests
+import json
 
 class Connector:
     def __init__(self, dome_url, api_key, provider_id):
@@ -24,6 +25,4 @@ if __name__ == "__main__":
     API_KEY = "246a7efb25.1880f832921c4f879e9b87fe744b2dec"
     connector = Connector("https://nextgen.dome40.io/", API_KEY, "CHEMEO")
     result = connector.get_data("Carbon monoxide")
-    for k, v in result.items():
-        print(f'*****{k}*****')
-        print(v)
+    print(json.dumps(result,indent=4))
